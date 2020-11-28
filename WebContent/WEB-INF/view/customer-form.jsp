@@ -34,17 +34,17 @@
 						<td><label>First Name: </label></td>
 						<td><form:input path="firstName" /></td>
 					</tr>
-					
+
 					<tr>
 						<td><label>Last Name: </label></td>
 						<td><form:input path="lastName" /></td>
 					</tr>
-					
+
 					<tr>
 						<td><label>E-mail: </label></td>
 						<td><form:input path="email" /></td>
 					</tr>
-					
+
 					<tr>
 						<td><input type="submit" value="Add" class="save" /></td>
 					</tr>
