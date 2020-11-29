@@ -30,6 +30,16 @@ public class CustomerController {
 		
 		return "list-customers";
 	}
+	
+	@GetMapping("/search")
+	public String searchCustomers(@RequestParam("keyword") String keyword, Model theModel) {
+		
+		List<Customer> theCustomers = customerService.searchCustomers(keyword);
+		
+		theModel.addAttribute("customers", theCustomers);
+		
+		return "list-customers";
+	}
 
 	@GetMapping("/showAddForm")
 	public String showAddForm(Model theModel) {
