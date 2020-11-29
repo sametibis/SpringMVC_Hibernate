@@ -3,6 +3,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -37,6 +38,10 @@
 					<c:url var="updateLink" value="/customer/updateCustomer">
 						<c:param name="customerId" value="${customer.id}"></c:param>
 					</c:url>
+					
+					<c:url var="deleteLink" value="/customer/deleteCustomer">
+						<c:param name="customerId" value="${customer.id}"></c:param>
+					</c:url>
 				
 					<tr>
 						<td>${customer.firstName}</td>
@@ -44,7 +49,10 @@
 						<td>${customer.email}</td>
 						<td>
 							<a href="${updateLink}">Update</a>
-						</td>						
+							|
+							<a href="${deleteLink}" onclick="if (!(confirm('Are you sure?'))) return false">Delete</a>
+						</td>
+												
 					</tr>
 				</c:forEach>
 

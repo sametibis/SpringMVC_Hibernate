@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-
 import com.sametibis.springdemo.entity.Customer;
 import com.sametibis.springdemo.service.CustomerService;
 
@@ -24,15 +23,14 @@ public class CustomerController {
 	
 	@GetMapping("/list")
 	public String listCustomers(Model theModel) {
-		
+
 		List<Customer> theCustomers = customerService.getCustomers();
 		
 		theModel.addAttribute("customers", theCustomers);
 		
-		
 		return "list-customers";
 	}
-	
+
 	@GetMapping("/showAddForm")
 	public String showAddForm(Model theModel) {
 		Customer theCustomer = new Customer();
@@ -62,6 +60,13 @@ public class CustomerController {
 		
 		// send to form with modelAttribute
 		return "customer-form";
+	}
+	
+	@GetMapping("/deleteCustomer")
+	public String deleteCustomer(@RequestParam("customerId") int theId) {
+		customerService.deleteCustomer(theId);
+		
+		return "redirect:/customer/list";
 	}
 	
 }
